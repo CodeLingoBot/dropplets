@@ -32,7 +32,7 @@
                 if (test_input($_POST["blogStyleType"]) == "default") {
                     $blogStyleSheet = "https://raw.githack.com/johnroper100/dropplets/2.0/main.css";
                     $blogPostStyleSheet = "https://raw.githack.com/johnroper100/dropplets/2.0/main.css";
-                } else if (test_input($_POST["blogStyleType"]) == "zen") {
+                } elseif (test_input($_POST["blogStyleType"]) == "zen") {
                     $blogStyleSheet = "https://raw.githack.com/johnroper100/dropplets/2.0/zenStyle.css";
                     $blogPostStyleSheet = "https://raw.githack.com/johnroper100/dropplets/2.0/zenStyle.css";
                 } else {
@@ -59,7 +59,7 @@ permissions and that the folder it is in has write permissions.");
 fwrite($config, $config_content);
 fclose($config);
 header("Location: ".dirname($_SERVER['REQUEST_URI']));
-} else if (test_input($_POST["form"]) == "post") {
+} elseif (test_input($_POST["form"]) == "post") {
 if (file_exists("config.php")) {
 if(isset($_POST["blogPostTitle"]) and isset($_POST["blogPostContent"]) and isset($_POST["blogPassword"]) and
 isset($_POST["blogPostStyleType"])){
@@ -157,7 +157,6 @@ header("Location: setup");
 }
 } else {
 echo("The form could not be submitted. Please try again later.");
-}
 } else {
 // If the url is setup, check for config and then show the setup page.
 if (count($URI_parts) >= 1 and $URI_parts[0] and $URI_parts[0] == 'setup') {
@@ -474,8 +473,7 @@ if (!isset($blogStyleType)) { $blogStyleType = 'default'; }
                 header("Location: setup");
             }
         }
-    }
-    function test_input($data) {
+    }function test_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
